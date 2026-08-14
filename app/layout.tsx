@@ -5,6 +5,7 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import { Toaster } from "react-hot-toast";
+import { METADATA_OG_IMG_URL, METADATA_OG_URL } from "@/lib/const";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -13,17 +14,16 @@ const roboto = Roboto({
   display: "swap",
 });
 
-// todo: export url to const
 export const metadata: Metadata = {
   title: "NoteHub",
   description: "NoteHub is a simple and efficient personal notes manager ",
   openGraph: {
     title: "NoteHub",
     description: "NoteHub is a simple and efficient personal notes manager ",
-    url: "https://08-zustand-seven-pink.vercel.app/",
+    url: METADATA_OG_URL,
     images: [
       {
-        url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+        url: METADATA_OG_IMG_URL,
         width: 1471,
         height: 980,
         alt: "NoteHub Logo",

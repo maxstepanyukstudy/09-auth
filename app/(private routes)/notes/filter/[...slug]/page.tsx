@@ -5,7 +5,11 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import NotesPageClient from "./Notes.client";
-import { APP_NOTES_FILTER_SLUG_PARAMS_INDEXES } from "@/lib/const";
+import {
+  APP_NOTES_FILTER_SLUG_PARAMS_INDEXES,
+  METADATA_OG_IMG_URL,
+  METADATA_OG_URL,
+} from "@/lib/const";
 import { Metadata } from "next";
 import { capitalizeOnlyFirstLetter } from "@/lib/util";
 
@@ -27,10 +31,10 @@ export async function generateMetadata({
     openGraph: {
       title: `${styledTagName} notes -  NoteHub`,
       description: `${styledTagName} notes at NoteHub (a simple and efficient personal notes manager)`,
-      url: `https://08-zustand-seven-pink.vercel.app/notes/filter/${tagName}`,
+      url: `${METADATA_OG_URL}/notes/filter/${tagName}`,
       images: [
         {
-          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+          url: METADATA_OG_IMG_URL,
           width: 1471,
           height: 980,
           alt: "NoteHub Logo",
