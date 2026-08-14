@@ -1,5 +1,7 @@
 import axios from "axios";
 import type { CreateNote, Note } from "../../types/note";
+import { nextApi } from "./api";
+import { User, UserDataRegister } from "@/types/user";
 
 const TOKEN = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
 const NOTES_PER_PAGE = 12;
@@ -47,5 +49,10 @@ export async function createNote(note: CreateNote): Promise<Note> {
 
 export async function deleteNote(id: string): Promise<Note> {
   const { data } = await notesApi.delete<Note>("/notes/" + id);
+  return data;
+}
+
+export async function register(userData: UserDataRegister): Promise<User> {
+  const { data } = await nextApi.post<User>("/auth/register", userData);
   return data;
 }
