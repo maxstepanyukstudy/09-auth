@@ -2,6 +2,28 @@ import Image from "next/image";
 import css from "./ProfilePage.module.css";
 import Link from "next/link";
 import Avatar from "@/app/favicon.ico"; // todo: remove temp img
+import { Metadata } from "next";
+import { METADATA_OG_IMG_URL, METADATA_OG_URL } from "@/lib/const";
+
+export const metadata: Metadata = {
+  title: "Profile - NoteHub",
+  description:
+    "Profile profile page at  NoteHub (a simple and efficient personal notes manager)",
+  openGraph: {
+    title: "Profile - NoteHub",
+    description:
+      "Profile profile page at  NoteHub (a simple and efficient personal notes manager)",
+    url: `${METADATA_OG_URL}/notes/action/create`,
+    images: [
+      {
+        url: METADATA_OG_IMG_URL,
+        width: 1471,
+        height: 980,
+        alt: "NoteHub Logo",
+      },
+    ],
+  },
+};
 
 export default function ProfilePage() {
   return (
