@@ -3,8 +3,12 @@
 import { register } from "@/lib/api/clientApi";
 import css from "./SignUpPage.module.css";
 import { useAuthStore } from "@/lib/store/userStore";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function SignUpPage() {
+  const [error, setError] = useState("");
+
   const setUser = useAuthStore((store) => store.setUser);
 
   async function handleSubmit(formData: FormData) {
@@ -12,8 +16,13 @@ export default function SignUpPage() {
       email: formData.get("email") as string,
       password: formData.get("password") as string,
     };
-    const user = await register(registerData);
-    setUser(user)
+    try {
+      const user = await register(registerData);
+      setUser(user);
+    } catch (e) {
+      setError("Login error");
+      toast.error(error);
+    }
   }
 
   return (
@@ -48,7 +57,7 @@ export default function SignUpPage() {
           </button>
         </div>
 
-        <p className={css.error}>Error</p>
+        {error && <p className={css.error}>{error}</p>}
       </form>
     </main>
   );
