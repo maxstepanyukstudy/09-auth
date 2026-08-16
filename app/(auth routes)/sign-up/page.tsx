@@ -5,8 +5,11 @@ import css from "./SignUpPage.module.css";
 import { useAuthStore } from "@/lib/store/userStore";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function SignUpPage() {
+  const router = useRouter();
+
   const [error, setError] = useState("");
 
   const setUser = useAuthStore((store) => store.setUser);
@@ -19,6 +22,7 @@ export default function SignUpPage() {
     try {
       const user = await register(registerData);
       setUser(user);
+      router.push("/profile");
     } catch (e) {
       setError("Login error");
       toast.error(error);

@@ -5,8 +5,11 @@ import css from "./SignInPage.module.css";
 import { login } from "@/lib/api/clientApi";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function SignInPage() {
+  const router = useRouter();
+
   const [error, setError] = useState("");
 
   const setUser = useAuthStore((store) => store.setUser);
@@ -19,9 +22,10 @@ export default function SignInPage() {
     try {
       const user = await login(loginData);
       setUser(user);
+      router.push('/profile')
     } catch (e) {
       setError("Registration error");
-      toast.error(error)
+      toast.error(error);
     }
   }
 
