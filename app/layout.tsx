@@ -6,6 +6,7 @@ import Footer from "@/components/Footer/Footer";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import { Toaster } from "react-hot-toast";
 import { METADATA_OG_IMG_URL, METADATA_OG_URL } from "@/lib/const";
+import AuthProvider from "@/components/AuthProvider/AuthProvider";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -45,11 +46,13 @@ export default function RootLayout({
     <html lang="en" className={`${roboto.variable}`}>
       <body>
         <TanStackProvider>
-          <Header />
-          {children}
-          <Footer />
-          {modal}
-          <Toaster />
+          <AuthProvider>
+            <Header />
+            {children}
+            <Footer />
+            {modal}
+            <Toaster />
+          </AuthProvider>
         </TanStackProvider>
       </body>
     </html>
