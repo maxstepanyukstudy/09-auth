@@ -2,7 +2,7 @@ import { Note } from "@/types/note";
 import axios from "axios";
 
 export const nextApi = axios.create({
-  baseURL: "https://notehub-api.goit.study",
+  baseURL: "http://localhost:3000/api",
   withCredentials: true,
 });
 
