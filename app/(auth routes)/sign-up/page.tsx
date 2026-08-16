@@ -2,7 +2,7 @@
 
 import { register } from "@/lib/api/clientApi";
 import css from "./SignUpPage.module.css";
-import { useAuthStore } from "@/lib/store/userStore";
+import { useAuthStore } from "@/lib/store/authStore";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";

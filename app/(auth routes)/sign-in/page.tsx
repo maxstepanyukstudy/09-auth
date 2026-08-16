@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuthStore } from "@/lib/store/userStore";
+import { useAuthStore } from "@/lib/store/authStore";
 import css from "./SignInPage.module.css";
 import { login } from "@/lib/api/clientApi";
 import { useState } from "react";
