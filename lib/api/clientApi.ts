@@ -1,10 +1,10 @@
 import axios from "axios";
 import type { CreateNote, Note } from "../../types/note";
 import { User } from "@/types/user";
-import { nextApi } from "./api";
+import { FetchNotesResponse, nextApi } from "./api";
+import { NOTES_PER_PAGE } from "../const";
 
 const TOKEN = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
-const NOTES_PER_PAGE = 12;
 
 const notesApi = axios.create({
   baseURL: "https://notehub-public.goit.study/api",
@@ -12,11 +12,6 @@ const notesApi = axios.create({
     Authorization: `Bearer ${TOKEN}`,
   },
 });
-
-interface FetchNotesResponse {
-  notes: Note[];
-  totalPages: number;
-}
 
 export interface UserDataRegister {
   email: string;

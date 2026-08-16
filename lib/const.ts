@@ -16,3 +16,5 @@ export const METADATA_OG_URL = "https://08-zustand-seven-pink.vercel.app"; // to
 
 export const METADATA_OG_IMG_URL =
   "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg";
+
+export const NOTES_PER_PAGE = 12;
