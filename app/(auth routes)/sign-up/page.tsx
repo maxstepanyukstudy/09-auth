@@ -2,14 +2,18 @@
 
 import { register } from "@/lib/api/clientApi";
 import css from "./SignUpPage.module.css";
+import { useAuthStore } from "@/lib/store/userStore";
 
 export default function SignUpPage() {
-  function handleSubmit(formData: FormData) {
+  const setUser = useAuthStore((store) => store.setUser);
+
+  async function handleSubmit(formData: FormData) {
     const registerData = {
       email: formData.get("email") as string,
       password: formData.get("password") as string,
     };
-    register(registerData);
+    const user = await register(registerData);
+    setUser(user)
   }
 
   return (

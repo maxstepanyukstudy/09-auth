@@ -1,15 +1,19 @@
 "use client";
 
+import { useAuthStore } from "@/lib/store/userStore";
 import css from "./SignInPage.module.css";
 import { login } from "@/lib/api/clientApi";
 
 export default function SignInPage() {
-  function handleSubmit(formData: FormData) {
+  const setUser = useAuthStore((store) => store.setUser);
+
+  async function handleSubmit(formData: FormData) {
     const loginData = {
       email: formData.get("email") as string,
       password: formData.get("password") as string,
     };
-    login(loginData);
+    const user = await login(loginData);
+    setUser(user);
   }
 
   return (
