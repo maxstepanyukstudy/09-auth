@@ -4,15 +4,6 @@ import { User } from "@/types/user";
 import { FetchNotesResponse, nextApi } from "./api";
 import { NOTES_PER_PAGE } from "../const";
 
-const TOKEN = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
-
-const notesApi = axios.create({
-  baseURL: "https://notehub-public.goit.study/api",
-  headers: {
-    Authorization: `Bearer ${TOKEN}`,
-  },
-});
-
 export interface UserDataRegister {
   email: string;
   password: string;
@@ -30,7 +21,7 @@ export async function fetchNotes(
 ): Promise<FetchNotesResponse> {
   tag = tag !== "all" ? tag : undefined;
 
-  const { data } = await notesApi.get<FetchNotesResponse>("/notes", {
+  const { data } = await nextApi.get<FetchNotesResponse>("/notes", {
     params: {
       page,
       search,
@@ -43,17 +34,17 @@ export async function fetchNotes(
 }
 
 export async function fetchNoteById(id: string): Promise<Note> {
-  const { data } = await notesApi.get<Note>("/notes/" + id);
+  const { data } = await nextApi.get<Note>("/notes/" + id);
   return data;
 }
 
 export async function createNote(note: CreateNote): Promise<Note> {
-  const { data } = await notesApi.post<Note>("/notes", note);
+  const { data } = await nextApi.post<Note>("/notes", note);
   return data;
 }
 
 export async function deleteNote(id: string): Promise<Note> {
-  const { data } = await notesApi.delete<Note>("/notes/" + id);
+  const { data } = await nextApi.delete<Note>("/notes/" + id);
   return data;
 }
 
