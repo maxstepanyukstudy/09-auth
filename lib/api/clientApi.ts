@@ -14,6 +14,11 @@ export interface UserDataLogin {
   password: string;
 }
 
+export interface UserPatch {
+  email?: string;
+  username?: string;
+}
+
 export async function fetchNotes(
   page?: number,
   search?: string,
@@ -68,8 +73,11 @@ export async function getMe(): Promise<User> {
   return data;
 }
 
+export async function updateMe(userPatch: UserPatch): Promise<User> {
+  const { data } = await nextApi.patch<User>("/users/me", userPatch);
+  return data;
+}
+
 export async function logout(): Promise<void> {
   await nextApi.post("/auth/logout");
 }
-// todo:
-// updateMe()
