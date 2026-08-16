@@ -1,4 +1,4 @@
-import { fetchNoteById } from "@/lib/api";
+import { fetchNoteById } from "@/lib/api/serverApi";
 import {
   dehydrate,
   HydrationBoundary,
@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-query";
 import NoteDetailsClient from "./NoteDetails.client";
 import { Metadata } from "next";
+import { METADATA_OG_IMG_URL, METADATA_OG_URL } from "@/lib/const";
 
 type NoteDetailsProps = {
   params: Promise<{ id: string }>;
@@ -23,10 +24,10 @@ export async function generateMetadata({
     openGraph: {
       title: `${note.title} -  NoteHub`,
       description: `${note.content} -  NoteHub`,
-      url: `https://08-zustand-seven-pink.vercel.app/notes/${id}`,
+      url: `${METADATA_OG_URL}/notes/${id}`,
       images: [
         {
-          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+          url: METADATA_OG_IMG_URL,
           width: 1471,
           height: 980,
           alt: "NoteHub Logo",

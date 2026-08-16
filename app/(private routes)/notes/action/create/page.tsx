@@ -1,6 +1,7 @@
 import NoteForm from "@/components/NoteForm/NoteForm";
 import css from "./CreateNote.module.css";
 import { Metadata } from "next";
+import { METADATA_OG_IMG_URL, METADATA_OG_URL } from "@/lib/const";
 
 export const metadata: Metadata = {
   title: "Create note - NoteHub",
@@ -10,10 +11,10 @@ export const metadata: Metadata = {
     title: "Create note - NoteHub",
     description:
       "Create note at NoteHub (a simple and efficient personal notes manager)",
-    url: "https://08-zustand-seven-pink.vercel.app/notes/action/create",
+    url: `${METADATA_OG_URL}/notes/action/create`,
     images: [
       {
-        url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+        url: METADATA_OG_IMG_URL,
         width: 1471,
         height: 980,
         alt: "NoteHub Logo",
