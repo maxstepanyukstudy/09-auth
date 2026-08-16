@@ -72,8 +72,18 @@ export async function login(userData: UserDataLogin): Promise<User> {
   return data;
 }
 
+export async function checkSession(): Promise<boolean> {
+  const { data } = await nextApi.get<{ success: boolean }>("/auth/session");
+  return data.success;
+}
+
+export async function getMe(): Promise<User> {
+  const { data } = await nextApi.get<User>("/users/me");
+  return data;
+}
+
+export async function logout(): Promise<void> {
+  await nextApi.post("/auth/logout");
+}
 // todo:
-// logout()
-// checkSession()
-// getMe()
 // updateMe()
