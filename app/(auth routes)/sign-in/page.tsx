@@ -22,10 +22,11 @@ export default function SignInPage() {
     try {
       const user = await login(loginData);
       setUser(user);
-      router.push('/profile')
+      router.push("/profile");
     } catch (e) {
-      setError("Registration error");
-      toast.error(error);
+      console.log("Login error", e);
+      setError("Login error");
+      toast.error("Login error");
     }
   }
 
