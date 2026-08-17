@@ -24,8 +24,9 @@ export default function SignUpPage() {
       setUser(user);
       router.push("/profile");
     } catch (e) {
-      setError("Login error");
-      toast.error(error);
+      console.log("Register error", e);
+      setError("Register error");
+      toast.error("Register error");
     }
   }
 
